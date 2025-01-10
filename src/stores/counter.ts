@@ -1,12 +1,12 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import type { User } from '@/infrastructure/interfaces';
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+export const useUserStore = defineStore('user', () => {
+  const user: User = {
+    id: '',
+    name: '',
+    runDigits: 0
+  };
 
-  return { count, doubleCount, increment }
+  return { user }
 })
