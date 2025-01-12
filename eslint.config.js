@@ -1,7 +1,7 @@
-import pluginVue from 'eslint-plugin-vue'
-import vueTsEslintConfig from '@vue/eslint-config-typescript'
-import pluginVitest from '@vitest/eslint-plugin'
-import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
+import pluginVue from 'eslint-plugin-vue';
+import vueTsEslintConfig from '@vue/eslint-config-typescript';
+import pluginVitest from '@vitest/eslint-plugin';
+import skipFormatting from '@vue/eslint-config-prettier/skip-formatting';
 
 export default [
   {
@@ -14,7 +14,7 @@ export default [
     ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
   },
 
-  ...pluginVue.configs['flat/essential'],
+  ...pluginVue.configs['flat/recommended'],
   ...vueTsEslintConfig(),
   
   {
@@ -22,4 +22,18 @@ export default [
     files: ['src/**/__tests__/*'],
   },
   skipFormatting,
-]
+  {
+    rules: {
+      semi: ['error', 'always'],
+      'max-len': ['error', {
+        code: 100,
+      }],
+      eqeqeq: ['error', 'always'],
+      'vue/max-len': ['error', {
+        'code': 100,
+        'template': 100,
+        'comments': 100
+      }],
+    },
+  },
+];
