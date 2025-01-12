@@ -9,15 +9,10 @@ export const useUserStore = defineStore('userStore', () => {
     runDigits: 0
   } as User);
 
-  const setRunDigits = (newDigits: number) => {
-    user.value.runDigits = newDigits;
-  };
-
-  const runDigitsIsSet = computed(() => user.value.runDigits);
+  const runDigitsIsSet = computed(() => !!user.value.runDigits);
 
   return {
     user,
-    setRunDigits,
     runDigitsIsSet
   };
 });

@@ -8,13 +8,12 @@
       <h2 class="store-title">{{ texts.title }}</h2>
       <p>{{ texts.userName }} {{ user.name }}</p>
       <p>{{ texts.userRun }} {{ user.runDigits }}</p>
-      <p>{{ texts.userName }} {{ runDigitsIsSet }}</p>
+      <p>{{ texts.runIsSet }} {{ runDigitsIsSet }}</p>
+      <br />
       <label>{{ texts.setARun }}</label>
-      <input
-        type="text"
-        inputmode="numeric"
-        @input="handleRunInput($event)"
-        @keypress="handleKeyPress($event)"
+      <NumericInput
+        :max-length="8"
+        @input="handleRunInput"
       />
     </h3>
   </div>
@@ -25,25 +24,21 @@ import type { HelloWorldProps } from '@/infrastructure/propsInterfaces';
 import { useUserStore } from '@/stores/userStore';
 import { storeToRefs } from 'pinia';
 import { getAppTexts } from '@/helpers/langHelper';
+import NumericInput from './CustomInputs/NumericInput.vue';
+import { onMounted } from 'vue';
 
 defineProps<HelloWorldProps>();
 const userStore = useUserStore();
-// we should set 'es' into an env variable for the whole app
-const { helloWorld: texts } = getAppTexts('es');
-
 const { user, runDigitsIsSet } = storeToRefs(userStore);
-const { setRunDigits } = userStore;
 
-const handleRunInput = (event: Event) => {
-  const { value } = event.target as HTMLInputElement;
-  setRunDigits(Number(value));
-};
+onMounted(() => {
+  user.value.name = 'Juanin';
+});
 
-const handleKeyPress = (event: KeyboardEvent) => {
-  const key = event.key;
-  if (!/^[0-9]$/.test(key)) {
-    event.preventDefault();
-  }
+const { helloWorld: texts } = getAppTexts();
+
+const handleRunInput = (value: number) => {
+  user.value.runDigits = Number(value);
 };
 </script>
 
