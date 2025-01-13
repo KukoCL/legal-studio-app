@@ -7,7 +7,8 @@ export default mergeConfig(
   defineConfig({
     test: {
       coverage: {
-        provider: 'v8'
+        provider: 'v8',
+        exclude: ['**/icons/**', '*.ts', '*.js', 'src/*.ts', 'src/*.vue', 'src/infrastructure/**'],
       },
       environment: 'jsdom',
       exclude: [...configDefaults.exclude, 'e2e/**'],

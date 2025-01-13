@@ -5,7 +5,7 @@
       You’ve successfully created a project with
       <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-      <h2 class="store-title">{{ texts.title }}</h2>
+      <strong class="store-title">{{ texts.title }}</strong>
       <p>{{ texts.userName }} {{ user.name }}</p>
       <p>{{ texts.userRun }} {{ user.runDigits }}</p>
       <p>{{ texts.runIsSet }} {{ runDigitsIsSet }}</p>
@@ -13,7 +13,6 @@
       <label>{{ texts.setARun }}</label>
       <NumericInput
         :max-length="8"
-        :value="user.runDigits.toString()"
         @input="handleRunInput"
       />
     </h3>
@@ -24,7 +23,7 @@
 import type { HelloWorldProps } from '@/infrastructure/propsInterfaces';
 import { useUserStore } from '@/stores/userStore';
 import { storeToRefs } from 'pinia';
-import { getAppTexts } from '@/helpers/langHelper';
+import useAppLang from '@/composables/useAppLang';
 import NumericInput from './CustomInputs/NumericInput.vue';
 import { onMounted } from 'vue';
 
@@ -36,6 +35,7 @@ onMounted(() => {
   user.value.name = 'Juanin';
 });
 
+const { getAppTexts } = useAppLang();
 const { helloWorld: texts } = getAppTexts();
 
 const handleRunInput = (value: number) => {

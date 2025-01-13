@@ -10,7 +10,7 @@ const defaultProps: NumericInputProps = {
 
 describe('NumericInput.vue', () => {
     it('should render', () => {
-        const wrapper = mount(NumericInput);
+        const wrapper = shallowMount(NumericInput, { props: defaultProps });
         expect(wrapper.exists()).toBe(true);
     });
 
@@ -23,7 +23,7 @@ describe('NumericInput.vue', () => {
     });
 
     it('should emit input value on input', async () => {
-        const wrapper = shallowMount(NumericInput);
+        const wrapper = shallowMount(NumericInput, { props: defaultProps });
         const input = wrapper.find('input');
         await input.setValue('10');
         expect(wrapper.emitted().input).toBeTruthy();
@@ -31,7 +31,7 @@ describe('NumericInput.vue', () => {
     });
 
     it('should not allow non-numeric input', async () => {
-        const wrapper = mount(NumericInput);
+        const wrapper = mount(NumericInput,  { props: { ...defaultProps, value: '' } });
         const input = wrapper.find('input');
         await input.trigger('keypress', { key: 'a' });
         expect(input.element.value).toBe('');

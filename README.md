@@ -1,6 +1,6 @@
 # legal-studio-app
 
-This template should help get you started developing with Vue 3 in Vite.
+Legal Studio Frontend Vue 3 App made with Vite.
 
 ## Recommended IDE Setup
 
