@@ -13,6 +13,7 @@
       <label>{{ texts.setARun }}</label>
       <NumericInput
         :max-length="8"
+        :value="user.runDigits.toString()"
         @input="handleRunInput"
       />
     </h3>

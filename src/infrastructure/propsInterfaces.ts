@@ -4,4 +4,5 @@ export interface HelloWorldProps {
 
 export interface NumericInputProps {
     maxLength: number;
+    value: string;
 }

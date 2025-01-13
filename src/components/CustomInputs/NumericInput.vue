@@ -3,6 +3,7 @@
     <input
       type="text"
       inputmode="numeric"
+      :value="props.value"
       :maxlength="props.maxLength"
       @input="handleRunInput"
       @keypress="handleKeyPress"
