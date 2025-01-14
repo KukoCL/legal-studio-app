@@ -4,7 +4,7 @@ import FeaturesPage from '@/pages/FeaturesPage.vue';
 
 export const routes: Array<RouteRecordRaw> = [
   {
-    path: '/', // This redirects to the default route
+    path: '/', // This redirects to the default route huehue
     redirect: '/home',
   },
   {
