@@ -3,6 +3,7 @@
     <input
       type="text"
       inputmode="numeric"
+      class="form-control"
       :value="props.value"
       :maxlength="props.maxLength"
       @input="handleRunInput"

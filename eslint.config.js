@@ -32,8 +32,10 @@ export default [
       'vue/max-len': ['error', {
         'code': 100,
         'template': 100,
-        'comments': 100
+        'comments': 100,
       }],
+      'indent': ['error', 2],
+      'comma-dangle': ['error', 'always-multiline'],
     },
   },
 ];

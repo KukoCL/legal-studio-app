@@ -6,13 +6,13 @@ export const useUserStore = defineStore('userStore', () => {
   const user = ref({
     id: '',
     name: '',
-    runDigits: 0
+    runDigits: 0,
   } as User);
 
   const runDigitsIsSet = computed(() => !!user.value.runDigits);
 
   return {
     user,
-    runDigitsIsSet
+    runDigitsIsSet,
   };
 });
