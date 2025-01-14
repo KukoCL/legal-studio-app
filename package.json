@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "homepage": "https://kukocl.github.io/legal-studio-app",
+  "main": "src/main.ts",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
