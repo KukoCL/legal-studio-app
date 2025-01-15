@@ -56,7 +56,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  Customers
+                  Something else
                 </a>
               </li>
             </ul>

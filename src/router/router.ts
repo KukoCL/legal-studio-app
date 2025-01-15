@@ -27,7 +27,7 @@ export const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory('./'),
+  history: createWebHistory('/legal-studio-app/'),
   routes,
 });
 
