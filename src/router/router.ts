@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 import HomePage from '@/pages/HomePage.vue';
 import FeaturesPage from '@/pages/FeaturesPage.vue';
+import PokeapiPage from '@/pages/PokeapiPage.vue';
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -14,6 +15,10 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/features',
     component: FeaturesPage,
+  },
+  {
+    path: '/pokeapi',
+    component: PokeapiPage,
   },
   {
     path: '/:pathMatch(.*)*', // This is a catch-all route
