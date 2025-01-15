@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createRouter, createWebHistory } from 'vue-router';
-import { routes } from './router';
+import { routes } from '@/router/router';
 
 describe('Router', () => {
   const router = createRouter({
