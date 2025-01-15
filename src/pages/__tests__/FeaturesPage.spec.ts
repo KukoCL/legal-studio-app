@@ -4,6 +4,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FeaturesPage from '../FeaturesPage.vue';
 
+
 describe('FeaturesPage', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
