@@ -20,9 +20,19 @@
 
     <div v-if="pokemon">
       <h2>Información del Pokémon</h2>
-      <p><strong>Nombre:</strong> {{ pokemon.name }}</p>
-      <p><strong>ID:</strong> {{ pokemon.id }}</p>
       <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
+      <p><strong>Nombre:</strong> {{ pokemon.name }}</p>
+      <p><strong>Nro ° en la Pokedex:</strong> {{ pokemon.id }}</p>
+      <h2>Datos extra</h2>
+      <p><strong>Nombre:</strong> {{ pokemon.name }}</p>
+      <li v-for="item in pokemon.types">
+        {{ item.type.name }}
+      </li>
+
+      <button class="btn btn-primary" @click="moreInformation">Datos extra</button>
+      <div v-if="generation">
+        <p><strong>Nombre:</strong> {{ generation.main_region.name}}</p>
+      </div>
     </div>
 
     <p v-if="error" class="error">{{ error }}</p>
@@ -36,6 +46,7 @@ export default {
       query: '', // Entrada del usuario
       pokemon: null, // Información del Pokémon
       error: '', // Mensaje de error si algo falla
+      generation: null, // Informacion adicional de generacion a la que pertenece el pokemon
     };
   },
   methods: {
@@ -48,6 +59,7 @@ export default {
 
       this.error = '';
       this.pokemon = null;
+
 
       try {
         // Llamado a la API con el nombre o número ingresado
@@ -66,6 +78,26 @@ export default {
         console.error(err);
       }
     },
+    async moreInformation()
+    {
+      try {
+        // Llamado a la API con el nombre o número ingresado
+        console.log(this.pokemon.past_types)
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/generation/1`
+        );
+
+        if (!response.ok) {
+          throw new Error(`No se encontró un informacion de "${this.pokemon.name}"`);
+        }
+
+        const data = await response.json();
+        this.generation = data; // Guardar los datos del la generacion
+      } catch (err) {
+        this.error = err.message || 'Hubo un error al buscar el Pokémon.';
+        console.error(err);
+      }
+    },
   },
 };
 </script>
@@ -74,26 +106,13 @@ export default {
 .container {
   max-width: 600px;
   margin: auto;
-  text-align: center;
+  text-align: left;
 }
 
 .search-container {
   margin: 20px 0;
 }
 
-input {
-  padding: 10px;
-  font-size: 16px;
-  width: calc(100% - 120px);
-  max-width: 400px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-left: 10px;
-  cursor: pointer;
-}
 
 img {
   width: 150px;
